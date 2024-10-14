@@ -3,9 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World</title>
+    <title>Party Pineapples Entertainment</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Hello World</h1>
+    <header>
+      <h1>Party Pineapples</h1>
+    </header>
+
+    <main>
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service">
+          <div class="service-image-container">
+            <img
+              src="https://media.istockphoto.com/id/184394036/photo/little-girl-having-face-painted-on-birthday-party.webp?a=1&b=1&s=612x612&w=0&k=20&c=PfrlNnmQPvyK4cCnE9sGbg7qucQyQ4vUK2Z6aeZsnXo="
+              alt="Little girl having face painted on birthday party"
+              class="service-image"
+            />
+          </div>
+          <h3>Face Painting</h3>
+          <p>
+            Transform kids into their favorite characters with our professional
+            face painting.
+          </p>
+        </div>
+        <div class="service">
+          <div class="service-image-container">
+            <img
+              src="https://media.istockphoto.com/id/618204146/photo/dreamy-girl-playing-in-the-autumn-park.webp?a=1&b=1&s=612x612&w=0&k=20&c=0H8VnEn_5q3BroUoanVhwfnlwq29OpPiZiBDOBHyUM4="
+              alt="Girl with balloon in autumn park"
+              class="service-image"
+            />
+          </div>
+          <h3>Balloon Animals</h3>
+          <p>
+            Delight your guests with amazing balloon sculptures and animals.
+          </p>
+        </div>
+      </div>
+
+      <h2>Contact Us</h2>
+      <form
+        id="contact-form"
+        action="https://formsubmit.co/andrewmsellen@gmail.com"
+        method="POST"
+      >
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <!-- Honeypot field to prevent spam -->
+        <input type="text" name="_honey" style="display: none" />
+        <!-- Disable captcha -->
+        <input type="hidden" name="_captcha" value="false" />
+        <!-- Update the _next value to point to the new thanks.html page -->
+        <input type="hidden" name="_next" value="/thanks.html" />
+        <button type="submit">Send</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Party Pineapples Entertainment. All rights reserved.</p>
+    </footer>
   </body>
 </html>
