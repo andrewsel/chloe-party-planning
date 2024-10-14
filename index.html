@@ -71,8 +71,21 @@
           name="_next"
           value="https://partypineapples.com/thanks.html"
         />
-        <button type="submit">Send</button>
+        <button type="submit" id="submit-button">
+          <span class="button-text">Send</span>
+          <span class="spinner"></span>
+        </button>
       </form>
     </main>
+
+    <script>
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          var button = document.getElementById("submit-button");
+          button.classList.add("loading");
+          button.disabled = true;
+        });
+    </script>
   </body>
 </html>
