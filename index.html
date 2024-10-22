@@ -58,9 +58,56 @@
           <input type="email" id="email" name="email" required />
         </div>
         <div class="form-group">
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
+          <label for="event-date">Event Date:</label>
+          <input type="date" id="event-date" name="event-date" required />
         </div>
+        <div class="form-group">
+          <label for="start-time">Start Time:</label>
+          <input type="time" id="start-time" name="start-time" required />
+        </div>
+        <div class="form-group">
+          <label for="end-time">End Time:</label>
+          <input type="time" id="end-time" name="end-time" required />
+        </div>
+
+        <div class="form-group">
+          <label>Select Service(s):</label>
+          <div class="service-selection">
+            <div class="service-option" data-service="face-painting">
+              <img
+                src="https://media.istockphoto.com/id/184394036/photo/little-girl-having-face-painted-on-birthday-party.webp?a=1&b=1&s=612x612&w=0&k=20&c=PfrlNnmQPvyK4cCnE9sGbg7qucQyQ4vUK2Z6aeZsnXo="
+                alt="Face Painting"
+              />
+              <p>Face Painting</p>
+              <p>$25 an hour</p>
+            </div>
+            <div class="service-option" data-service="balloon-twisting">
+              <img
+                src="https://media.istockphoto.com/id/618204146/photo/dreamy-girl-playing-in-the-autumn-park.webp?a=1&b=1&s=612x612&w=0&k=20&c=0H8VnEn_5q3BroUoanVhwfnlwq29OpPiZiBDOBHyUM4="
+                alt="Balloon Twisting"
+              />
+              <p>Balloon Twisting</p>
+              <p>$25 an hour</p>
+            </div>
+            <div class="service-option" data-service="both">
+              <img
+                src="https://images.unsplash.com/photo-1509666537727-9154b6962292?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Face Painting and Balloon Twisting"
+              />
+              <p>Face Painting and Balloon Twisting</p>
+              <p>$45 an hour</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden input to store selected services -->
+        <input
+          type="hidden"
+          id="selected-services"
+          name="selected-services"
+          required
+        />
+
         <!-- Honeypot field to prevent spam -->
         <input type="text" name="_honey" style="display: none" />
         <!-- Disable captcha -->
@@ -83,9 +130,33 @@
         .getElementById("contact-form")
         .addEventListener("submit", function (e) {
           var button = document.getElementById("submit-button");
+          var selectedServices =
+            document.getElementById("selected-services").value;
+
+          if (!selectedServices) {
+            e.preventDefault(); // Prevent form submission
+            alert("Please select at least one service.");
+            return;
+          }
+
           button.classList.add("loading");
           button.disabled = true;
         });
+
+      document.querySelectorAll(".service-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          this.classList.toggle("selected");
+          updateSelectedServices();
+        });
+      });
+
+      function updateSelectedServices() {
+        const selectedServices = Array.from(
+          document.querySelectorAll(".service-option.selected")
+        ).map((option) => option.dataset.service);
+        document.getElementById("selected-services").value =
+          selectedServices.join(",");
+      }
     </script>
   </body>
 </html>
